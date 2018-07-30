@@ -1,0 +1,26 @@
+.TodoListItem.liked{
+  color: orange;
+}
+
+.MyButton{
+  margin-left:15px;
+  opacity: 0.5;
+}
+.MyButton:hover{
+  cursor: pointer;
+  opacity: 1;
+}
+.MyButton:focus{
+  outline: 0px;
+}
+
+.MyButton-Like{
+  border-radius: 50px;
+}
+
+.MyButton-Edit{
+  background: #ddd;
+}
+.MyButton-Delete{
+  background: red;
+}
