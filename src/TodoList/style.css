@@ -1,3 +1,6 @@
+/* this class will happen for all the ul children of TodoList */
+/* it should be written .TodoList > ul or you can give the ul the necessary class */
+
 .TodoList ul{
   list-style: none;
 }

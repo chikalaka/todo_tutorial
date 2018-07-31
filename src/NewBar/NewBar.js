@@ -8,6 +8,7 @@ class NewBar extends Component{
     this.state = {term: ''}
     this.addTodo = this.addTodo.bind(this);
   }
+  // nice
   addTodo(e){
     e.preventDefault();
     this.props.onSubmit(this.state.term);

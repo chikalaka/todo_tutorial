@@ -18,19 +18,30 @@ class TodoApp extends Component{
     this.updateTodo = this.updateTodo.bind(this);
   }
   componentDidMount(){
-    console.log("Welcome ya gamad!");    
+    // for next tasks be aware that this data should come from the server
+    console.log("Welcome ya gamad!");
     this.setState({todos: data});
   }
   toggleLike(todo){
+    // * const todos = [...this.state.todos]
     const newTodos = this.state.todos.slice();
+    // * _.forEach(todos, obj => {
     _.forEach(newTodos, function(obj) {
+      // did you even check that its working??
+      // since when we update something by its title and not its id?
       if(obj.title===todo.title)
         obj.isLike = !obj.isLike;
     });
+    // * this.setState({todos});
     this.setState({todos: newTodos});
   }
   addNewTodo(term){
-    var newTodo = {title: term, isLike: false};
+    // never use var! you can use let or const - in this case const
+    // isLike is not really necessary
+    // why call it term? why not title? the function should be dumb - get something and add to state
+    // here you should add a unique id
+    const newTodo = {title: term, isLike: false};
+    // nice use of callback
     this.setState(prevState => ({
       todos: [newTodo, ...prevState.todos]
     }))

@@ -2,10 +2,13 @@ import React, {Component} from 'react';
 import './style.css';
 import MyButton from '../MyButton/MyButton';
 
+// why not TodoItem? why should it care if he is a part of a list or not?
 class TodoListItem extends Component{
   constructor(props){
     super(props);
+    // * const {todo} = this.props
     const todo = this.props.todo;
+    // again, why call it term when it is actually a title
     this.state = {onEdit: false, term: todo.title}
 
     this.toggleEdit = this.toggleEdit.bind(this);
@@ -17,11 +20,14 @@ class TodoListItem extends Component{
     });
   }
   save(){
-    this.props.onUpdate(this.props.todo, this.state.term); //TodoApp method
+    this.props.onUpdate(this.props.todo, this.state.term); //TodoApp method - we shouldn't care where the method came from
     this.toggleEdit();
   }
   render(){
     const todo = this.props.todo;
+    // as a convention, a class name in TodoListItem component should always start with 'TodoListItem'
+    // it doesn't matter if you pass it to div or to MyButton
+    // the reason is if tomorrow you would want another component that is calling MyButton there could be collisions
     return(
       <li className={`TodoListItem ${todo.isLike && `liked`}`}>
         {this.state.onEdit ? <input type='text' value={this.state.term} onChange={(e)=>this.setState({term: e.target.value})} /> : todo.title}
